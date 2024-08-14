@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 步驟一：載入React, Babel -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <style>
+        img {
+            width: 200px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 步驟二:載入root元素 -->
+    <div id="root"></div>
+    <!-- 步驟三:建立React元素 -->
+    <script type="text/babel">
+        function App() {
+            /* JSX寫法 */
+   
+
+            return <>
+                <div>
+                    <div>
+                        <h2>我是圖片</h2>
+                        <img src="./image/627f10b8ace6a2af7e17529a5e17d84e.jfif" alt="" />
+                    </div>
+                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Deleniti, consectetur quidem repudiandae eos perferendis numquam quae? Perferendis quibusdam voluptatem in.</p>
+                </div>
+            </>
+        }
+        /* 步驟四:渲染(顯示)App元件到根元件(root)上 */
+        const el = document.getElementById('root');
+        const root = ReactDOM.createRoot(el);
+        root.render(<App />);
+    </script>
+
+
+
+</body>
+
+</html>
