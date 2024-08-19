@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>JSX 常見問題</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <script src="../javascripts/vendor.js"></script>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/redux/4.2.0/redux.min.js"
+        integrity="sha512-1/8Tj23BRrWnKZXeBruk6wTnsMJbi/lJsk9bsRgVwb6j5q39n0A00gFjbCTaDo5l5XrPVv4DZXftrJExhRF/Ug=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <style>
+        .row {
+            width: 100%;
+        }
+
+        .bg-lighter {
+            background-color: rgb(193, 193, 190);
+        }
+
+        #root {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            margin: 0 300px;
+            background-color: #ffffff;
+
+        }
+    </style>
+</head>
+
+<body class="bg-lighter">
+    <div class="container main my-5">
+        <div class="row">
+            <main class="col_post">
+                <!-- 章節標題 -->
+                <div class="mb-4">
+                    <h1 class="mt-0 text-muted">JSX 常見問題</h1><small>檔名：<code>react-6.html</code></small>
+                </div>
+                <!-- 練習開始 -->
+                <div id="root"></div>
+
+                <script type="text/babel">
+                    // 1. 定義元件一定是大寫
+                    // 2. 多個元素外層需要使用標籤包覆，或使用 React.Fragment
+                    // 3. 沒有正確結尾，結尾不正確
+                    // 4. 屬性轉換名稱運用要正確
+                    // 5. return 建議加入括號
+                    // 6. for =>htmlFor
+                    // 7. class => className
+                    // 8. value =>defaultValue
+
+                    function App() {
+                        return (
+                            <>
+                                <main style={{ width: '100%' }}>
+                                    <h2 style={{ fontSize: '24px', margin: "20px 0 20px 20px" }}>退休檢疫犬找新家！暖男Geo 撒嬌Ivy等你喔～</h2>
+                                    <div style={{ display: 'flex', justifyContent: 'flex-start', position: 'relative' }}>
+                                        <div style={{ display: 'flex' }}>
+                                            <img style={{ width: '10%', height: "auto", border: "2px solid #444", borderRadius: '99px', marginLeft: "20px", marginRight: "10px", marginBottom: '20px' }}
+                                                src="https://unsplash.com/photos/milky-way-R3E2kEIC-G4" alt="" />
+                                            <div>
+                                                <h2 style={{ fontSize: '18px', width: '100%' }}>新頭殼</h2>
+                                                <p style={{ fontSize: '12px', width: '100%' }}>更新於 3小時前 • 發布於 3小時前 • Newtalk新聞 |洪翠蓮 綜合報導</p>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <button style={{ backgroundColor: '#08c76e', borderRadius: '10px', marginTop: '10px', padding: 'auto', display: 'flex', justifyContent: "center", position: 'absolute', right: '10px', zIndex: '1' }}>追蹤</button>
+                                        </div>
+                                    </div >
+                                    <img style={{ padding: '10px 20px', width: "100%" }}
+                                        src="https://today-obs.line-scdn.net/0ha7VEiPBnPhhrPC690PFBT1NqMmlYWiQRSV8id0doYyoTEHhJUF1te0dpYDQWWH1OS1h0fhw1ZStACXlNUg/w1200" alt="" />
+                                    <p style={{ fontSize: '12px', color: '#777', padding: '0 20px' }}>來自美國的檢疫犬Geo是男生（左圖），與原本是浪浪的Ivy（右圖）退休，正在等待新的家。 圖：翻攝自動植物防疫檢疫署臉書／新頭殼製</p>
+                                    <h3 style={{ fontSize: '18px', paddingLeft: '20px', paddingBottom: "20px" }}>Newtalk新聞</h3>
+                                    <p style={{ fontSize: '16px', padding: '10px 20px' }}>2隻退休檢疫偵測犬找新家囉！分別在桃園機場與金門檢疫站服務的Geo和Ivy，即日起開放領養申請，年滿20歲且有獨立經濟能力的愛狗人士，不妨試一試。</p>
+                                    <p style={{ fontSize: '16px', padding: '10px 20px' }}>來自美國的檢疫犬Geo是男生，大約2016年出生，個性溫和親人，剛到金門檢疫站執勤時，第一次看到大海的牠激動地對著海浪汪汪叫。</p>
+                                    <p style={{ fontSize: '16px', padding: '10px 20px' }}>與Geo差不多同齡的Ivy是女生，因為當檢疫犬時是浪浪，所以剛開始與陌生人接觸會有戒心，熟了以後就開始黏人、愛撒嬌。</p>
+                                    <p style={{ fontSize: '16px', padding: '10px 20px' }}>檢疫犬Geo和Ivy正在等待有緣人給他們一個家，有意領養人至少要滿20歲，具獨立經濟能力，如果與家人同住，必須徵得同住家人的同意，不但要簽署認養切結書，也必須同意讓防檢署等單位進行後續追蹤（2年內電訪或實際訪問3次以上），並且不得無故將領養的檢疫犬轉送他人、棄養或放養。</p>
+                                    <p style={{ fontSize: '16px', padding: '10px 20px' }}>想要領養Geo或Ivy的民眾，可以E-mail向屏東科技大學偵測犬訓練中心助理（moninsea@gmail.com），或向動植物防檢疫協會鍾小姐（chiayu7099.chung@gmail.com）索取「檢疫偵測犬領養申請表格」，填寫表單並附上居家環境照片，等待審核。</p>
+                                    <p style={{ fontSize: '16px', padding: '10px 20px' }}>詳細領養流程諮詢，可於上班時間電洽：屏東科技大學偵測犬訓練中心08-7740391林助理，或鍾小姐03-3982663分機191。</p>
+                                </main>
+                            </>
+                        )
+                    }
+
+
+                    // 將下列訂正
+                    // function app() {
+                    //   return 
+                    //     <label for="exampleDataList" class="form-label" style="color: var(--bs-blue)">Datalist example</label>
+                    //       <input class="form-control" list="datalistOptions" id="exampleDataList" placeholder="Type to search...">
+                    //       <datalist id="datalistOptions">
+                    //         <option value="San Francisco">
+                    //         <option value="New York">
+                    //         <option value="Seattle">
+                    //         <option value="Los Angeles">
+                    //         <option value="Chicago">
+                    //     </datalist>
+                    //}
+
+                    // 簡寫法
+                    ReactDOM
+                        .createRoot(document.getElementById('root'))
+                        .render(<App />);
+                </script>
+
+                <!-- 練習結束 -->
+            </main>
+        </div>
+    </div>
+
+    <link rel="stylesheet" href="../stylesheets/all.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+</body>
+
+</html>
