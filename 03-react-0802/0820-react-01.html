@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 步驟一：載入React, Babel -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="./javascripts/vendor.js"></script>
+    <style>
+        p {}
+    </style>
+
+
+</head>
+
+<body>
+    <!-- 步驟二:載入root元素 -->
+    <div id="root"></div>
+
+
+    <div class="card" style="width: 18rem">
+        <div class="card-img-top" style="height: 200px;
+            background-image: url('https://media.istockphoto.com/id/1401100981/photo/young-woman-freelancer-traveler-working-online-using-laptop-and-enjoying-the-beautiful-nature.jpg?b=1&s=170667a&w=0&k=20&c=APFnR6nLEdH4MxojjFdNi6-g0jXE6zlvb0EXJmkkgwU=');
+            background-size: cover;
+            background-position: center center;
+            ">
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">卡片標題</h5>
+            <p class="card-text">
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Modi culpa
+                aspernatur tempore cupiditate illo minima voluptatem blanditiis optio
+                accusantium earum voluptate magni repellendus, ipsa dolor adipisci libero
+                qui commodi veritatis.
+            </p>
+            <a href="https://unsplash.com/s/photos/free" target="_blank" class="btn btn-primary">Go
+                somewhere</a>
+        </div>
+    </div>
+
+    <script type="text/babel">
+        // 建立圖片元件
+        // 元件名稱字首大寫
+
+        // 建立卡片元件
+        function Card(props) {
+            //有沒有年齡資料
+            let msgAge = '';
+            if (props.age == '') {
+                msgAge = '沒有提供年齡'
+            } else {
+                msgAge = props.age + "歲";
+            }
+            // 元件結束後必須要有回傳值
+
+            /* 檢查有無按鈕名稱 */
+            let msgBtnName = '';
+            if (props.age == '') {
+                msgBtnName = '未命名';
+            } else {
+                msgBtnName = props.btnName;
+            }
+
+            return (
+                <>
+                    <div className="card" style={{
+                        width: props.width,
+                        margin: '20px',
+                        border: '2px solid #777',
+                        borderWidth: props.bw,
+                        borderColor: props.bc,
+                        borderStyle: props.bs,
+                        border: props.bd
+                    }}>
+                        <img src={props.imgUrl} alt="" />
+                        <div className="card-body">
+                            <h5 className="card-title">{props.name}</h5>
+                            <p className="card-text">年齡:{msgAge} </p>
+                            <a href="#" target="_blank" className="btn btn-primary">{msgBtnName}</a>
+                        </div>
+                    </div>
+                </>
+            )
+        }
+
+
+        //步驟三:建立React元素
+
+        function App() {
+            /* JSX寫法 */
+            return (
+                <>
+                    <Card imgUrl="../image/627f10b8ace6a2af7e17529a5e17d84e.jfif"
+                        name="卡片一" age='20' btnName='按鈕' width='300px' bw='20px' bc='#777' bs='margin: 10px' />
+                    <Card imgUrl="https://media.istockphoto.com/id/1401100981/photo/young-woman-freelancer-traveler-working-online-using-laptop-and-enjoying-the-beautiful-nature.jpg?b=1&s=170667a&w=0&k=20&c=APFnR6nLEdH4MxojjFdNi6-g0jXE6zlvb0EXJmkkgwU="
+                        name="卡片二" age='' btnName='' width='150px' />
+                </>
+            )
+
+
+        }
+
+
+        /* 步驟四:渲染(顯示)App元件到根元件(root)上 */
+        const el = document.getElementById('root');
+        const root = ReactDOM.createRoot(el);
+        root.render(<App />);
+
+
+    </script>
+
+
+    <link rel="stylesheet" href="./stylesheets/all.css">
+    <link rel="stylesheet" href="./stylesheets/all.css.map">
+</body>
+
+</html>
