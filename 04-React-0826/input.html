@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <h2>原生JS</h2>
+    <input type="text" id="input" placeholder="請輸入文字">
+    <!-- 原生JS -->
+    <script>
+        /* change事件：游標離開之後觸發 */
+        // let input = document.getElementById('input');
+        // input.addEventListener('change', (e) => {
+        //     // console.log(input.value);
+        //     console.log(e.target.value);
+        // });
+
+        /* keyup事件：鍵盤彈上來時觸發 */
+        let input = document.getElementById('input');
+        input.addEventListener('keyup', (e) => {
+            // console.log(input.value);
+            console.log(e.target.value);
+        });
+    </script>
+
+
+
+    <br>
+    <hr>
+    <br>
+
+    <h2>React</h2>
+    <div id="root"></div>
+    <!-- React -->
+    <!-- input標籤要綁定useState -->
+    <script type="text/babel">
+        const { useState } = React;  //從React解構出useState方法
+        //步驟三:建立React元素
+        function App() {
+            //定義狀態
+            const [text, setText] = useState('');
+            /* JSX寫法 */
+            return <>
+                <div>
+                    {/* React環境下不可以直接使用value*/}
+                    {/*<input type="text" id="inputReact" placeholder="請輸入文字" Value='111' />*/}
+                    {/*React環境下若要使用value，要搭配onChange事件*/}
+                    <input type="text" id="inputReact" placeholder="請輸入文字" value={text}
+                        onChange={(e) => {
+                            // console.log(e.target.value);
+                            setText(e.target.value);
+                        }}
+                        /*失去焦點(游標)*/
+                        onBlur={() => {
+                            console.log('onBlur');
+                            console.log(text);
+                        }}
+                        /*取得焦點(游標)*/
+                        onFocus={(e) => {
+                            console.log('onFocus')
+                        }}
+                    />
+                    {/*顯示文字方塊內容*/}
+                    {text}
+                </div>
+            </>
+        };
+
+        /* 步驟四:渲染(顯示)App元件到根元件(root)上 */
+        const el = document.getElementById('root');
+        const root = ReactDOM.createRoot(el);
+        root.render(<App />);
+
+    </script>
+
+</body>
+
+</html>
