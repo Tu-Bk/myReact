@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        const { useState, useEffect } = React;
+
+
+        function App() {
+            const [count, setCount] = useState(0);
+            const [num, setNum] = useState(1);
+            // 頁面渲染後會立即執行(初始化)
+            // 只要畫面重新渲染會再次執行
+            useEffect(() => {
+                // 更新頁面標題
+                document.title = `按鈕次數:${count}`;
+                console.log(2)
+            })
+
+            // 使用空陣列
+            // 初始化會被執行，之後就不會被執行
+            useEffect(() => {
+                // 更新頁面標題
+                // document.title = `按鈕次數:${count}`;
+                console.log(3)
+            }, [])
+
+            // 使用內容或變數的陣列
+            // 初始化會被執行
+            // 當陣列的內容被改變時，也會觸發
+            useEffect(() => {
+                console.log(4)
+            }, [num])
+
+            // JSX寫法
+            return (
+                <div>
+                    {console.log(1)}
+                    <p>按了多少次按鈕:{count}</p>
+                    <button onClick={() => {
+                        setCount(count + 1);
+                    }}>Click</button>
+                </div>
+            )
+        };
+
+        ReactDOM
+        const el = document.getElementById('root');
+        const root = ReactDOM.createRoot(el);
+        root.render(<App />);
+    </script>
+
+
+</body>
+
+</html>

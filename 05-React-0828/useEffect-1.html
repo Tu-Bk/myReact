@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <title>Document</title>
+    <!-- <script type="text/babel" src="./demo.js"></script> -->
+</head>
+
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        const { useEffect } = React;
+
+        function App() {
+            //  useEffect被觸發的時間是在渲染完之後
+            useEffect(() => {
+                // document.title = 'useEffect更改title,渲染完畢';
+                // console.log('2');
+
+                /* 監聽事件 */
+                document.getElementById('btn2').addEventListener('click', () => {
+                    document.title = '監聽事件按鈕2更新title'
+                });
+                // editTitle();
+            });
+            return (
+                <div>
+                    <h2>Hello</h2>
+                    <button onClick={() => {
+                        document.title = '按鈕更改title,渲染完畢';
+                        // console.log('1');
+                    }}>更新title</button>
+                    <button id='btn2'>按鈕2</button>
+                </div>
+            )
+        };
+
+        ReactDOM
+        const el = document.getElementById('root');
+        const root = ReactDOM.createRoot(el);
+        root.render(<App />);
+    </script>
+
+
+</body>
+
+</html>
