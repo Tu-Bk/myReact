@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 燈箱效果 -->
+    <!-- <link rel="stylesheet" href="./jQuery/lightbox/css/lightbox.css"> -->
+
+    <!-- 步驟一：載入React, Babel -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <style>
+        img {
+            width: 550px;
+            height: 500px;
+        }
+
+        .box {
+            /* border: 2px solid #444; */
+            width: 550px;
+            height: 500px;
+            position: relative;
+            /* 對位基準點 */
+        }
+
+        /* 輪播導覽列 */
+        #nav {
+            position: absolute;
+            right: 20px;
+            bottom: 20px;
+            z-index: 99;
+        }
+
+        #nav a {
+            color: transparent;
+            /* color: #fff; */
+            /* text-decoration: none; */
+            font-size: 20px;
+            /* font-size: 0; */
+            margin-bottom: 20px;
+            border: 2px solid black;
+            border-radius: 50%;
+            display: block;
+            width: 20px;
+            height: 20px;
+            text-align: center;
+            line-height: 20px;
+        }
+
+        #nav a.activeSlide {
+            background-color: tomato;
+        }
+
+        /* 作用中的數字底色會改變 */
+    </style>
+</head>
+
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+
+        // 自行撰寫JQuery
+        // JQuery環境正常寫法
+        // $(document).render(function () {
+        // });
+        const App = () => {
+            const { useEffect } = React;
+
+            useEffect(() => {
+                /* ↓↓JQuery環境簡寫方法↓↓ */
+                $(function () {
+                    /* ↑↑JQuery環境簡寫方法↑↑ */
+                    // $('#imgCycle').cycle();
+
+                    $('#imgCycle').after('<div id="nav"></div>').cycle({
+                        // fx: 'zoom',
+                        fx: 'fade',/* 輪播方式 */
+                        timeout: -500,/* 輪播速度 */
+                        // sync: false,
+                        delay: -200,  /* 第一次的第一張圖停留的時間 */
+                        pager: '#nav', /* 執行已建立好的CSS樣式 */
+                    });
+                });
+            }, []);
+
+            return (
+                <div>
+                    <h2>自動輪播+輪播鈕</h2>
+                    <div class="box">
+                        <div id="imgCycle">
+                            <img src="./image/img1.jpg" alt="" />
+                            <img src="./image/img2.jpg" alt="" />
+                            <img src="./image/627f10b8ace6a2af7e17529a5e17d84e.jfif" alt="" />
+                            <img src="./image/img2.jpg" alt="" />
+                            <img src="./image/img1.jpg" alt="" />
+                        </div>
+                        {/*  <nav>輪播導覽列的位置</nav> */}
+                    </div>
+                </div>
+            )
+        }
+        ReactDOM
+            .createRoot(document.querySelector('#root'))
+            .render(<App />)
+    </script>
+
+    <!-- JQuety主程式 -->
+    <script src="./jQuery/js/jquery-1.11.3.min.js"></script>
+    <!-- 輪播主程式 -->
+    <script src="./jQuery/js/jquery.cycle.all.js"></script>
+
+</body>
+
+</html>

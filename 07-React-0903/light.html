@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 燈箱效果 -->
+    <link rel="stylesheet" href="./jQuery/lightbox/css/lightbox.css">
+
+    <!-- 步驟一：載入React, Babel -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <style>
+        img {
+            width: 200px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+
+        const App = () => {
+            return (
+                <div>
+                    <h2>燈箱效果</h2>
+                    <a href="./image/627f10b8ace6a2af7e17529a5e17d84e.jfif" data-lightbox="group" data-title="PHOTO1">
+                        <img src="./image/627f10b8ace6a2af7e17529a5e17d84e.jfif" alt="" />
+                    </a>
+                    <a href="./image/img1.jpg" data-lightbox="group" data-title="PHOTO2">
+                        <img src="./image/img1.jpg" alt="" />
+                    </a>
+                    <a href="./image/img2.jpg" data-lightbox="group" data-title="PHOTO3">
+                        <img src="./image/img2.jpg" alt="" />
+                    </a>
+                </div>
+            )
+        }
+        ReactDOM
+            .createRoot(document.querySelector('#root'))
+            .render(<App />)
+    </script>
+
+    <!-- JQuety主程式 -->
+    <script src="./jQuery/js/jquery-1.11.3.min.js"></script>
+    <!-- 燈箱效果js -->
+    <script src="./jQuery/lightbox/js/lightbox.js"></script>
+
+</body>
+
+</html>
