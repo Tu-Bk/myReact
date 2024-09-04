@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+
+    <!-- 步驟一：載入React, Babel -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <link rel="stylesheet" href="./jQuery/css/textslider.css">
+
+    <style>
+        a {
+            text-decoration: none;
+            color: #777;
+        }
+
+        .box {
+            display: block;
+            background-color: #ddd;
+            width: 150px;
+            text-align: center;
+            padding: 15px 0;
+            margin: 50px;
+            transition: all 0.5s linear;
+        }
+
+        .box2 {
+            width: 200px;
+            /* height: 200px; */
+            overflow: hidden;
+            display: inline-block;
+            border: 2px solid #444;
+            margin: 50px;
+        }
+
+        .box2 img {
+            width: 100%;
+            vertical-align: bottom;
+            transition: all 0.5s linear;
+        }
+
+        .imgScale img {
+            transform: scale(2);
+        }
+
+        /* 背景色的效果 */
+        .bgColor {
+            background-color: #000;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+
+        const { useEffect } = React;
+        // const App = () => {
+        function App() {
+            useEffect(() => {
+                $(function () {
+                    // 背景顏色
+                    $('#css1').hover(function () {
+                        // 新增類別方法:addClass()
+                        $(this).addClass('bgColor');
+                    }, function () {
+                        // 刪除類別方法:removeClass()
+                        $(this).removeClass('bgColor');
+                    });
+                    // 圖片縮放
+                    $('#css2').hover(function(){
+                        $(this).addClass('imgScale');
+                    },function(){
+                        $(this).removeClass('imgScale');
+                    });
+                });
+            }, []);
+
+            return (
+                <div>
+                    <h2>動態新鄒刪除類別</h2>
+                    <a href="#" className="box" id='css1'>背景變色</a>
+                    <a href="#" className="box2" id='css2'><img src="./image/img3.jfif" alt="" /></a>
+
+                </div>
+            )
+        }
+        ReactDOM
+            .createRoot(document.querySelector('#root'))
+            .render(<App />)
+
+    </script>
+
+    <!-- JQuety主程式 -->
+    <script src="./jQuery/js/jquery-1.11.3.min.js"></script>
+
+
+
+</body>
+
+</html>
