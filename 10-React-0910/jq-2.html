@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+
+    <!-- 步驟一：載入React, Babel -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <!-- <link rel="stylesheet" href="./jQuery/css/textslider.css"> -->
+
+    <style>
+        #wrapper {
+            width: 800px;
+            margin: 0 auto;
+            text-align: justify;
+            padding: 50px 0;
+        }
+
+        .btnArea a {
+            color: red;
+            text-decoration: none;
+        }
+
+        p {
+            line-height: 1.5;
+        }
+
+        /* 隱藏彈出視窗的內容 */
+        #modalContent {
+            display: none;
+        }
+
+        /* 遮罩元素 */
+    </style>
+</head>
+
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        const { useEffect } = React;
+
+        function App() {
+            useEffect(() => {
+                // 撰寫JQuery
+                $(function () {
+
+
+                    //  取得彈跳視窗按鈕
+                    let modalBtn = $('modalBtn');
+                    // 遮罩背景透明度
+                    let overlayOpacity = 0.7;
+                    // JQuery 監聽事件的寫法
+                    modalBtn.on('click', function (e) {
+                        // 取消預設動作
+                        e.preventDefault();
+                        // 取得超連結
+                        let setMdw = $(this);
+                        // 取得超連結的href屬性質
+                        let setHref = setMdw.attr('href');
+                        // 取得href對應ID的內容
+                        let setSource = $(setHref).html();
+                        // 取得視窗高度
+                        let curHeight = $(window).height();
+
+
+
+                        /* 
+                        //    動態生成下方的元素 
+                        //    遮罩元素
+                        <div id="mdOverlay"></div>
+                         // 彈跳視窗區域
+                        <div id="mdWindow"></div>
+                         // 關閉紐 
+                        <div class="mdClose">X</div>
+                        //    被隱藏的內容 
+                        <div id="contentWrap">被隱藏的內容</div>
+                        */
+
+                        $('body').append('<div id="mdOverlay"></div><div id="mdWindow"><div class="mdClose">X</div><div id="contentWrap">被隱藏的內容</div></div>');
+                        $('#mdOverlay,#mdWindow').css({ display: 'block', opacity: '0' });
+                        $('#mdOverlay').css({ height: curHeight });
+
+                    });
+
+
+                });
+            }, []);
+
+            return (
+                <div id="wrapper">
+                    <div className="btnArea">
+                        <a href="modalContent" className="modalBtn">彈跳視窗</a>
+                    </div>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad voluptatibus ratione commodi iure cumque consectetur minima, deserunt officiis repellat, corrupti ipsam maiores eligendi eaque nemo autem quam inventore suscipit mollitia enim aliquid! Nam iste facilis blanditiis quam quia adipisci! Aperiam iure laudantium dolorem provident facilis animi laborum odit repudiandae molestiae quibusdam magnam facere at harum, delectus ullam neque itaque eveniet nemo labore culpa sint nostrum repellendus? Quasi ab deleniti nisi nostrum totam possimus rerum, id non, beatae aspernatur molestiae, impedit perspiciatis hic. Accusantium culpa et maiores necessitatibus sapiente corporis tenetur doloremque ea cupiditate repellendus officiis labore vel hic ab enim tempora distinctio maxime minus vero, inventore similique dicta dignissimos. Ducimus suscipit modi voluptas accusamus dolor corporis optio, laudantium soluta veniam nostrum eveniet ipsum ad nulla deleniti tenetur porro sequi at ut quaerat? Ipsa, qui vel autem laborum consequatur at quaerat corrupti! Quos laboriosam iste animi perspiciatis eaque vitae iure, enim est laborum quisquam. Est obcaecati iusto repellat eveniet dolores minima repellendus fuga beatae, voluptatum laboriosam officiis. Fugit eligendi perferendis expedita nostrum inventore. Velit, optio beatae ullam debitis eius iure quisquam, ad incidunt voluptatibus, tempore nisi earum culpa dolorem illo sint ab tempora quis assumenda? Veritatis nisi ullam autem consectetur eveniet dolor, temporibus eius ipsam earum quae laudantium inventore quia tempore error molestiae sequi iste, ea accusamus distinctio. Dignissimos provident aperiam laudantium voluptate deserunt, asperiores quis pariatur doloribus, voluptatem cupiditate, fugiat voluptates vitae amet quia et atque sapiente commodi vero similique earum rem? Velit commodi, molestiae saepe soluta obcaecati recusandae? Odit adipisci magnam quis voluptates. Mollitia voluptas inventore aliquam modi incidunt praesentium eligendi totam quis tempore accusantium, exercitationem nulla quae ad minima ullam veritatis numquam fugit recusandae, reprehenderit excepturi necessitatibus atque. Excepturi mollitia maxime suscipit, voluptate ab dolores repellendus esse minima illo officia illum nihil corrupti eos recusandae eaque molestias. Dolorem laborum placeat aut quis sapiente ratione suscipit numquam exercitationem voluptatum, sint a odit sunt, magni reprehenderit veritatis consectetur? Non minima ipsa ea provident? Commodi est quidem ipsam minima dolor autem earum voluptas explicabo, sit minus facere porro modi sapiente error cumque eligendi voluptatem accusamus doloremque! Quisquam cum quod id eos saepe tempore architecto sequi ab tenetur vitae? Aliquam, similique! Necessitatibus optio iure quos fuga, soluta aperiam eius, dolore delectus laudantium consequuntur eveniet excepturi eum id velit nesciunt cum dicta nisi officiis sit ea ipsum autem architecto? Illo rerum vel dignissimos magnam aspernatur sit mollitia, nesciunt reiciendis ipsum laudantium a unde vitae quasi, corporis quae recusandae, veniam harum saepe non ab quidem! Molestiae beatae placeat voluptatem officiis amet temporibus ratione illo, dolor quos fuga sunt, harum unde ipsam nesciunt nostrum minima, eaque dignissimos exercitationem assumenda adipisci nam fugit est ad. Inventore magnam maiores quia qui perspiciatis dolore accusantium voluptatum numquam tempora, saepe, necessitatibus error molestias alias consectetur amet et enim dolorem natus deserunt quod ratione dolorum! Tempore pariatur nesciunt quisquam sunt iste vitae libero reprehenderit quas ab minima, repellat eaque temporibus eos totam. Cum vitae distinctio animi voluptatum tempora, sit, inventore autem possimus minus doloribus sed eius voluptatem incidunt et ab?</p>
+                    {/* 彈出視窗內容 */}
+                    <div id="modalContent">
+                        <h2>彈出視窗標題</h2>
+                        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Unde adipisci ex nihil voluptas natus recusandae minus temporibus, debitis quisquam accusantium eius alias saepe inventore officia voluptates vel sint iure, cumque pariatur voluptatibus. Modi tenetur minus assumenda molestiae vel inventore nostrum id incidunt aliquam. Hic adipisci at ut quasi reprehenderit! Omnis eum quas, placeat at id mollitia est provident ratione maxime a, magnam quae nesciunt cupiditate! Nostrum, voluptas sequi magni nulla, accusantium dicta, nesciunt eos facere fugit aspernatur tenetur reprehenderit? Eum corporis quas maxime facilis cupiditate omnis, odit aperiam reiciendis dolorem veritatis minima deleniti commodi quisquam aspernatur quos in qui quibusdam?</p>
+                    </div>
+
+                </div>
+
+            )
+        }
+        ReactDOM
+            .createRoot(document.querySelector('#root'))
+            .render(<App />)
+
+    </script>
+
+    <!-- JQuety主程式 -->
+    <script src="./jQuery/js/jquery-1.11.3.min.js"></script>
+
+
+</body>
+
+</html>
