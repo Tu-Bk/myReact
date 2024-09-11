@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+
+    <!-- 步驟一：載入React, Babel -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <!-- <link rel="stylesheet" href="./jQuery/css/textslider.css"> -->
+
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        const { useState } = React;
+
+        function App() {
+            // #1 使用者名稱
+            const [inputName, setInputName] = useState('test');
+
+            /* #2 下拉清單 select*/
+            // 建立一個縣市名稱清單
+            const arrCity = ["台北市", "新北市", "桃園市", "新竹市"];
+            const [selCity, setSelCity] = useState('');
+
+            // JSX寫法
+            return (
+                <div>
+                    {/* #1 input */}
+                    <label htmlFor="username">使用者名稱</label>
+                    <input type="text" id="username" value={inputName} onChange={e => {
+                        setInputName(e.target.value);
+                        // console.log(e);
+                    }} />
+                    <br />
+                    文字方塊內容:{inputName}
+
+                    <hr />
+                    {/* #2 下拉清單 select*/}
+                    {/* disabled => 失效的 */}
+                    <select name="" id="" value={selCity} onChange={e => {
+                        setSelCity(e.target.value)
+                    }}>
+                        <option value="" disabled>請選擇縣市</option>
+                        {/* <option value="台北市">台北市</option>
+                        <option value="新北市">新北市</option>
+                        <option value="桃園市">桃園市</option>
+                        <option value="新竹市">新竹市</option> */}
+                        {
+                            arrCity.map((city) => {
+                                return <option value={city} key={city}>{city}</option>
+                            })
+                        }
+                    </select>   {selCity}
+
+
+                </div>
+
+            )
+        }
+        ReactDOM
+            .createRoot(document.querySelector('#root'))
+            .render(<App />)
+
+    </script>
+
+    <!-- JQuety主程式 -->
+    <!-- <script src="./jQuery/js/jquery-1.11.3.min.js"></script> -->
+
+
+</body>
+
+</html>
